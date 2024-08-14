@@ -62,10 +62,10 @@ impl Race {
             let cur: usize = uf.sample(&mut rng);
 
             if !wo_issues.contains(&cur) {
-                let this_p: Pilot = Pilot::new(&p.name, &p.moto.name);
+                let arrived_pilot: Pilot = Pilot::new(&p.name, &p.moto.name);
 
                 wo_issues.push(cur);
-                res.push(this_p);
+                res.push(arrived_pilot);
             }
         }
 
@@ -73,7 +73,7 @@ impl Race {
     }
 
     pub fn dump_starting_grid(&self) -> String {
-        let mut res = "Starting line:\n".to_string();
+        let mut res: String = format!("Welcome to {} - Starting line:\n", self.circuit);
 
         for v in &self.start {
             let cur = format!("Pilot {} - Moto {}\n", v.name, v.moto.name);
