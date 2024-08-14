@@ -1,4 +1,7 @@
-use rand::distributions::{Distribution, Uniform};
+use rand::{
+    distributions::{Distribution, Uniform},
+    rngs::ThreadRng,
+};
 
 pub type Grid = Vec<Pilot>;
 
@@ -50,11 +53,11 @@ impl Race {
         self.finish.push(p)
     }
 
-    pub fn finish_race(&self) -> Grid {
-        let mut res = Grid::new();
-        let tot = self.start.len();
-        let uf = Uniform::from(0..tot);
-        let mut rng = rand::thread_rng();
+    pub fn run_race(&self) -> Grid {
+        let mut res: Vec<Pilot> = Grid::new();
+        let tot: usize = self.start.len();
+        let uf: Uniform<usize> = Uniform::from(0..tot);
+        let mut rng: ThreadRng = rand::thread_rng();
 
         let mut wo_issues: Vec<usize> = vec![];
 
@@ -72,7 +75,7 @@ impl Race {
         res
     }
 
-    pub fn dump_starting_grid(&self) -> String {
+    pub fn warmup(&self) -> String {
         let mut res: String = format!("Welcome to {} - Starting line:\n", self.circuit);
 
         for v in &self.start {

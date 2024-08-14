@@ -15,7 +15,7 @@ fn main() {
     r1.start_add_pilot(p2);
     r1.start_add_pilot(p3);
 
-    println!("{}", r1.dump_starting_grid());
+    println!("{}", r1.warmup());
 
-    println!("{:?}", r1.finish_race());
+    println!("{:?}", r1.run_race());
 }
