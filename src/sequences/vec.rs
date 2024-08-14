@@ -17,11 +17,3 @@ impl Pilot {
         }
     }
 }
-
-impl Grid {
-    fn 
-}
-
-pub fn start_race(pilots_list: Vec<&'static str>) -> Grid {
-    let grid = 
-}
