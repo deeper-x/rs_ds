@@ -1,11 +1,14 @@
+use sequences::vecdeque;
+
 mod sequences {
     pub mod linkedlist;
     pub mod vec;
+    pub mod vecdeque;
 }
 
 use sequences::linkedlist::{Ledger, Owner, Transaction};
 use sequences::vec::{Pilot, Race};
-
+use sequences::vecdeque::{Issue, TicketManager};
 fn main() {
     let p1 = Pilot::new("capirossi", "ducati");
     let p2 = Pilot::new("cadalora", "Yamaha");
@@ -33,4 +36,19 @@ fn main() {
     l.add_transaction(t2);
 
     println!("{:?}", l);
+
+    let mut tm = TicketManager::new("tm_demo");
+    let i1 = Issue::new("issue_1", false);
+    let i2 = Issue::new("issue_2", true);
+    let i3 = Issue::new("issue_3", false);
+    let i4 = Issue::new("issue_4", true);
+    let i5 = Issue::new("issue_5", false);
+
+    tm.add_issue(i1);
+    tm.add_issue(i2);
+    tm.add_issue(i3);
+    tm.add_issue(i4);
+    tm.add_issue(i5);
+
+    println!("{:?}", tm);
 }
