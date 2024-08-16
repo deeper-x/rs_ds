@@ -1,15 +1,16 @@
 use rand::Rng;
+use std::collections::LinkedList;
 use std::time::SystemTime;
 
-pub type Transactions = Vec<Transaction>;
+pub type Transactions = LinkedList<Transaction>;
 
 #[derive(Debug)]
 pub struct Owner {
     id: String,
     username: String,
 }
-
 #[derive(Debug)]
+
 pub struct Transaction {
     id: String,
     owner: Owner,
@@ -78,11 +79,11 @@ impl Ledger {
         let id = gen_random_id(10);
         Ledger {
             id,
-            transactions: vec![],
+            transactions: LinkedList::new(),
         }
     }
 
     pub fn add_transaction(&mut self, t: Transaction) -> () {
-        self.transactions.push(t);
+        self.transactions.push_back(t);
     }
 }
